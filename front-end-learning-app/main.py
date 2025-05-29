@@ -17,6 +17,7 @@
 
 '''
 import flet as ft
+import os
 from app.screens import (
     AuthUI,
     MainUI
@@ -53,8 +54,6 @@ def main(page: ft.Page):
         'vertical_alignment':ft.MainAxisAlignment.CENTER, #* Center the views vertically
     }
     
-    
-
     '''
         - app_router: A list of routes for the main application.
         - auth_router: A list of routes related to authentication
@@ -150,4 +149,10 @@ def main(page: ft.Page):
         page.go(page.route) #* Go to the current route, if the user is authenticated
 
 if __name__ == "__main__":
-    ft.app(target=main)
+    port = int(os.getenv("PORT", "10000"))
+    ft.app(
+        target=main,
+        port=port,
+        view=ft.WEB_BROWSER,
+        host="0.0.0.0"
+    )

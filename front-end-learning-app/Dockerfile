@@ -38,6 +38,8 @@ ENV PORT=10000
 ENV PYTHONPATH=/app
 ENV DISPLAY=:99
 ENV PYTHONUNBUFFERED=1
+ENV FLET_SERVER_PORT=10000
+ENV FLET_FORCE_WEB_VIEW=true
 
 # Expose the port
 EXPOSE 10000
@@ -57,7 +59,7 @@ echo "Current working directory: $(pwd)"\n\
 echo "Contents of current directory:"\n\
 ls -la\n\
 \n\
-python3 -m flet run --port $PORT --host 0.0.0.0 main.py\n\
+python3 main.py\n\
 ' > /app/start.sh && \
     chmod +x /app/start.sh
 
