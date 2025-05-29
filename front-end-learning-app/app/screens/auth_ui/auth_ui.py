@@ -238,7 +238,25 @@ class AuthUI(ft.Container):
         
         # Validate required fields
         if not all([username, password, email, fullname, phone]):
-            self.signin_text.value = "Please fill in all required fields"
+            self.signin_text.value = "Vui lòng điền đầy đủ thông tin"
+            self.signin_text.color = "red"
+            self.page.update()
+            self.signin_btn.visible = True
+            self.loading_indicator.visible = False
+            return
+        
+        # Basic email validation
+        if '@' not in email or '.' not in email:
+            self.signin_text.value = "Email không hợp lệ"
+            self.signin_text.color = "red"
+            self.page.update()
+            self.signin_btn.visible = True
+            self.loading_indicator.visible = False
+            return
+            
+        # Basic phone validation
+        if not phone.isdigit() or len(phone) < 10:
+            self.signin_text.value = "Số điện thoại không hợp lệ"
             self.signin_text.color = "red"
             self.page.update()
             self.signin_btn.visible = True
@@ -256,12 +274,14 @@ class AuthUI(ft.Container):
         # Attempt sign-up
         response = AuthAPI.sign_up(data)
         if response.get('code') == 'res_success':
-            self.signin_text.value = "Sign up successful! Redirecting to login..."
+            self.signin_text.value = "Đăng ký thành công! Đang chuyển hướng..."
             self.signin_text.color = "green"
             self.page.update()
             self.page.go('/sign-in')
         else:
-            error_msg = response.get('message', 'Sign up failed. Please try again.')
+            error_msg = response.get('message', 'Đăng ký thất bại. Vui lòng thử lại.')
+            if 'exist' in error_msg.lower():
+                error_msg = "Tên đăng nhập hoặc email đã tồn tại"
             self.signin_text.value = error_msg
             self.signin_text.color = "red"
             

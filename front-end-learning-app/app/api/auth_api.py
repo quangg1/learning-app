@@ -84,14 +84,25 @@ class AuthAPI:
         '''
         try:
             response = post(f'{DOMAIN_API}/api-view/sign-up/', json=payload)
+            print(f"Response status: {response.status_code}")
+            print(f"Response content: {response.content}")
+            
             if response.status_code == 200:
                 return response.json()
             else:
+                error_msg = f'Server returned status code {response.status_code}'
+                try:
+                    error_data = response.json()
+                    if isinstance(error_data, dict):
+                        error_msg = error_data.get('message', error_msg)
+                except:
+                    pass
                 return {
                     'code': 'res_error',
-                    'message': f'Server returned status code {response.status_code}'
+                    'message': error_msg
                 }
         except Exception as e:
+            print(f"Exception during signup: {str(e)}")
             return {
                 'code': 'res_error',
                 'message': str(e)
