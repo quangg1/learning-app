@@ -1,0 +1,47 @@
+[
+  {
+    "model": "web_app.exercise",
+    "pk": 1,
+    "fields": {
+      "title": "Print Hello World",
+      "description": "Write a Python program to print 'Hello World'.",
+      "detail_lesson": null,
+      "extent": 1,
+      "link_solution": "",
+      "code_solution": "print('Hello World')",
+      "created_at": "2024-06-01T10:10:00Z",
+      "updated_at": "2024-06-01T10:10:00Z",
+      "tagname": []
+    }
+  },
+  {
+    "model": "web_app.exercise",
+    "pk": 2,
+    "fields": {
+      "title": "Create a Django Model",
+      "description": "Define a Django model for a blog post.",
+      "detail_lesson": null,
+      "extent": 2,
+      "link_solution": "",
+      "code_solution": "class BlogPost(models.Model): ...",
+      "created_at": "2024-06-02T11:10:00Z",
+      "updated_at": "2024-06-02T11:10:00Z",
+      "tagname": []
+    }
+  },
+  {
+    "model": "web_app.exercise",
+    "pk": 3,
+    "fields": {
+      "title": "Analyze a CSV File",
+      "description": "Write Python code to read and analyze a CSV file.",
+      "detail_lesson": null,
+      "extent": 3,
+      "link_solution": "",
+      "code_solution": "import pandas as pd\n# ...",
+      "created_at": "2024-06-03T12:10:00Z",
+      "updated_at": "2024-06-03T12:10:00Z",
+      "tagname": []
+    }
+  }
+]

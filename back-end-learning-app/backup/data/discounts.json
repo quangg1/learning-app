@@ -1,0 +1,32 @@
+[
+  {
+    "model": "web_app.discount",
+    "pk": 1,
+    "fields": {
+      "discount_percentage": "10.00",
+      "code_name": "SUMMER10",
+      "created_at": "2024-06-01T09:00:00Z",
+      "updated_at": "2024-06-01T09:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.discount",
+    "pk": 2,
+    "fields": {
+      "discount_percentage": "20.00",
+      "code_name": "WELCOME20",
+      "created_at": "2024-06-02T09:00:00Z",
+      "updated_at": "2024-06-02T09:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.discount",
+    "pk": 3,
+    "fields": {
+      "discount_percentage": "15.00",
+      "code_name": "SPRING15",
+      "created_at": "2024-06-03T09:00:00Z",
+      "updated_at": "2024-06-03T09:00:00Z"
+    }
+  }
+]

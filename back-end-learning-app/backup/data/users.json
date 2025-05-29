@@ -1,0 +1,41 @@
+[
+  {
+    "model": "web_app.user",
+    "pk": 1,
+    "fields": {
+      "username": "alice",
+      "email": "alice@example.com",
+      "full_name": "Alice Smith",
+      "phone": "1234567890",
+      "password": "password123",
+      "created_at": "2024-06-01T10:00:00Z",
+      "updated_at": "2024-06-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.user",
+    "pk": 2,
+    "fields": {
+      "username": "bob",
+      "email": "bob@example.com",
+      "full_name": "Bob Johnson",
+      "phone": "2345678901",
+      "password": "password123",
+      "created_at": "2024-06-02T11:00:00Z",
+      "updated_at": "2024-06-02T11:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.user",
+    "pk": 3,
+    "fields": {
+      "username": "carol",
+      "email": "carol@example.com",
+      "full_name": "Carol Williams",
+      "phone": "3456789012",
+      "password": "password123",
+      "created_at": "2024-06-03T12:00:00Z",
+      "updated_at": "2024-06-03T12:00:00Z"
+    }
+  }
+]

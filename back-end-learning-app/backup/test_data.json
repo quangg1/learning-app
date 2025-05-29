@@ -1,0 +1,316 @@
+[
+  {
+    "model": "web_app.role",
+    "pk": 1,
+    "fields": {
+      "role_name": "Instructor",
+      "created_at": "2024-06-01T10:00:00Z",
+      "updated_at": "2024-06-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.role",
+    "pk": 2,
+    "fields": {
+      "role_name": "Student",
+      "created_at": "2024-06-01T10:00:00Z",
+      "updated_at": "2024-06-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.role",
+    "pk": 3,
+    "fields": {
+      "role_name": "Admin",
+      "created_at": "2024-06-01T10:00:00Z",
+      "updated_at": "2024-06-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.user",
+    "pk": 1,
+    "fields": {
+      "username": "alice",
+      "email": "alice@example.com",
+      "full_name": "Alice Smith",
+      "phone": "1234567890",
+      "password": "password123",
+      "created_at": "2024-06-01T10:00:00Z",
+      "updated_at": "2024-06-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.user",
+    "pk": 2,
+    "fields": {
+      "username": "bob",
+      "email": "bob@example.com",
+      "full_name": "Bob Johnson",
+      "phone": "2345678901",
+      "password": "password123",
+      "created_at": "2024-06-02T11:00:00Z",
+      "updated_at": "2024-06-02T11:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.user",
+    "pk": 3,
+    "fields": {
+      "username": "carol",
+      "email": "carol@example.com",
+      "full_name": "Carol Williams",
+      "phone": "3456789012",
+      "password": "password123",
+      "created_at": "2024-06-03T12:00:00Z",
+      "updated_at": "2024-06-03T12:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.userrole",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "role": 1,
+      "created_at": "2024-06-01T10:00:00Z",
+      "updated_at": "2024-06-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.userrole",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "role": 2,
+      "created_at": "2024-06-02T11:00:00Z",
+      "updated_at": "2024-06-02T11:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.userrole",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "role": 3,
+      "created_at": "2024-06-03T12:00:00Z",
+      "updated_at": "2024-06-03T12:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.extent",
+    "pk": 1,
+    "fields": {
+      "name": "Short Course",
+      "created_at": "2024-06-01T08:00:00Z",
+      "updated_at": "2024-06-01T08:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.extent",
+    "pk": 2,
+    "fields": {
+      "name": "Full Program",
+      "created_at": "2024-06-02T08:00:00Z",
+      "updated_at": "2024-06-02T08:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.extent",
+    "pk": 3,
+    "fields": {
+      "name": "Workshop",
+      "created_at": "2024-06-03T08:00:00Z",
+      "updated_at": "2024-06-03T08:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.course",
+    "pk": 1,
+    "fields": {
+      "title": "Introduction to Python",
+      "description": "Learn the basics of Python programming.",
+      "price": 49.99,
+      "instructor": 1,
+      "discount": 1,
+      "extent": 1,
+      "created_at": "2024-06-01T10:00:00Z",
+      "updated_at": "2024-06-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.course",
+    "pk": 2,
+    "fields": {
+      "title": "Advanced Django",
+      "description": "Deep dive into Django for web development.",
+      "price": 99.99,
+      "instructor": 2,
+      "discount": null,
+      "extent": 2,
+      "created_at": "2024-06-02T11:00:00Z",
+      "updated_at": "2024-06-02T11:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.course",
+    "pk": 3,
+    "fields": {
+      "title": "Data Science with Python",
+      "description": "Explore data analysis and visualization using Python.",
+      "price": 129.99,
+      "instructor": 3,
+      "discount": 2,
+      "extent": 3,
+      "created_at": "2024-06-03T12:00:00Z",
+      "updated_at": "2024-06-03T12:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.course",
+    "pk": 4,
+    "fields": {
+      "title": "Machine Learning Basics",
+      "description": "An introduction to machine learning concepts.",
+      "price": 149.99,
+      "instructor": 1,
+      "discount": null,
+      "extent": 1,
+      "created_at": "2024-06-04T13:00:00Z",
+      "updated_at": "2024-06-04T13:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Web Development Bootcamp",
+      "description": "Full stack web development from scratch.",
+      "price": 199.99,
+      "instructor": 2,
+      "discount": 3,
+      "extent": 2,
+      "created_at": "2024-06-05T14:00:00Z",
+      "updated_at": "2024-06-05T14:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.course",
+    "pk": 6,
+    "fields": {
+      "title": "React for Beginners",
+      "description": "Learn to build interactive UIs with React.",
+      "price": 79.99,
+      "instructor": 3,
+      "discount": null,
+      "extent": 3,
+      "created_at": "2024-06-06T15:00:00Z",
+      "updated_at": "2024-06-06T15:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.course",
+    "pk": 7,
+    "fields": {
+      "title": "Database Design",
+      "description": "Principles of designing efficient databases.",
+      "price": 59.99,
+      "instructor": 1,
+      "discount": 1,
+      "extent": 1,
+      "created_at": "2024-06-07T16:00:00Z",
+      "updated_at": "2024-06-07T16:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.lesson",
+    "pk": 1,
+    "fields": {
+      "title": "Getting Started with Python",
+      "description": "Introduction to Python syntax and setup.",
+      "course": 1,
+      "created_at": "2024-06-01T10:00:00Z",
+      "updated_at": "2024-06-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.lesson",
+    "pk": 2,
+    "fields": {
+      "title": "Django Models",
+      "description": "Understanding Django ORM and models.",
+      "course": 2,
+      "created_at": "2024-06-02T11:00:00Z",
+      "updated_at": "2024-06-02T11:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.lesson",
+    "pk": 3,
+    "fields": {
+      "title": "Data Analysis Basics",
+      "description": "Learn to analyze data using Python libraries.",
+      "course": 3,
+      "created_at": "2024-06-03T12:00:00Z",
+      "updated_at": "2024-06-03T12:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.detaillesson",
+    "pk": 1,
+    "fields": {
+      "name": "Variables and Data Types",
+      "content": "Learn about variables and data types in Python.",
+      "lesson": 1,
+      "extent": 1,
+      "created_at": "2024-06-01T10:30:00Z",
+      "updated_at": "2024-06-01T10:30:00Z"
+    }
+  },
+  {
+    "model": "web_app.detaillesson",
+    "pk": 2,
+    "fields": {
+      "name": "Control Flow",
+      "content": "Understand if-else statements and loops.",
+      "lesson": 1,
+      "extent": 1,
+      "created_at": "2024-06-01T11:00:00Z",
+      "updated_at": "2024-06-01T11:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.detaillesson",
+    "pk": 3,
+    "fields": {
+      "name": "Defining Models",
+      "content": "How to define models in Django.",
+      "lesson": 2,
+      "extent": 2,
+      "created_at": "2024-06-02T12:00:00Z",
+      "updated_at": "2024-06-02T12:00:00Z"
+    }
+  },
+  {
+    "model": "web_app.detaillesson",
+    "pk": 4,
+    "fields": {
+      "name": "QuerySets and Managers",
+      "content": "Learn about QuerySets and model managers in Django.",
+      "lesson": 2,
+      "extent": 2,
+      "created_at": "2024-06-02T12:30:00Z",
+      "updated_at": "2024-06-02T12:30:00Z"
+    }
+  },
+  {
+    "model": "web_app.detaillesson",
+    "pk": 5,
+    "fields": {
+      "name": "Data Analysis with Pandas",
+      "content": "Introduction to data analysis using the Pandas library.",
+      "lesson": 3,
+      "extent": 3,
+      "created_at": "2024-06-03T13:00:00Z",
+      "updated_at": "2024-06-03T13:00:00Z"
+    }
+  }
+]
