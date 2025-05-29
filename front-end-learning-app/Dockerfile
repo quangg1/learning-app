@@ -3,7 +3,10 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    apt-get update && \
+    apt-get install -y \
     build-essential \
     libgtk-3-0 \
     libgdk-pixbuf2.0-0 \
@@ -11,15 +14,9 @@ RUN apt-get update && apt-get install -y \
     libpangocairo-1.0-0 \
     libcairo2 \
     libglib2.0-0 \
-    gstreamer1.0-plugins-base \
-    gstreamer1.0-plugins-good \
-    gstreamer1.0-plugins-bad \
-    gstreamer1.0-plugins-ugly \
-    gstreamer1.0-libav \
     libgstreamer1.0-0 \
     libgstreamer-plugins-base1.0-0 \
-    libgstreamer-plugins-good1.0-0 \
-    libgstapp-1.0-0 \
+    gstreamer1.0-plugins-base \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first to leverage Docker cache
