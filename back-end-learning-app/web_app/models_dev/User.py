@@ -51,7 +51,14 @@ class User(AbstractUser):
     )
 
     class Meta:
-        db_table = 'user'
+        db_table = 'auth_user'
+        verbose_name = 'user'
+        verbose_name_plural = 'users'
 
     def __str__(self):
         return self.username
+
+    def save(self, *args, **kwargs):
+        if not self.full_name:
+            self.full_name = f"{self.first_name} {self.last_name}".strip()
+        super().save(*args, **kwargs)

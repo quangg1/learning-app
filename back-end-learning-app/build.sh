@@ -28,13 +28,27 @@ except OperationalError:
     raise Exception("Could not connect to database!")
 END
 
-echo "Making migrations for web_app..."
+echo "Removing old migrations..."
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+find . -path "*/migrations/*.pyc" -delete
+
+echo "Creating fresh migrations..."
 python manage.py makemigrations web_app --noinput
 
-echo "Showing migrations plan..."
-python manage.py showmigrations
+echo "Attempting to reset database schema..."
+python manage.py shell << END
+from django.db import connection
+cursor = connection.cursor()
+try:
+    cursor.execute("DROP SCHEMA public CASCADE;")
+    cursor.execute("CREATE SCHEMA public;")
+    print("Database schema reset successful!")
+except Exception as e:
+    print(f"Error resetting schema: {e}")
+END
 
 echo "Running migrations..."
+python manage.py migrate --noinput
 python manage.py migrate auth --noinput
 python manage.py migrate contenttypes --noinput
 python manage.py migrate admin --noinput
@@ -52,7 +66,7 @@ with connection.cursor() as cursor:
     """)
     tables = [row[0] for row in cursor.fetchall()]
     print("Available tables:", tables)
-    required_tables = ['user', 'role', 'userrole']
+    required_tables = ['auth_user', 'role', 'userrole']
     for table in required_tables:
         if table not in tables:
             print(f"WARNING: '{table}' table is missing!")
@@ -65,6 +79,17 @@ roles = ['Student', 'Instructor', 'Admin']
 for role_name in roles:
     role, created = Role.objects.get_or_create(role_name=role_name)
     print(f"Role '{role_name}' {'created' if created else 'already exists'}")
+END
+
+echo "Creating superuser if it doesn't exist..."
+python manage.py shell << END
+from django.contrib.auth import get_user_model
+User = get_user_model()
+if not User.objects.filter(username='admin').exists():
+    User.objects.create_superuser('admin', 'admin@example.com', 'admin')
+    print("Superuser created!")
+else:
+    print("Superuser already exists!")
 END
 
 echo "Build completed successfully!" 
