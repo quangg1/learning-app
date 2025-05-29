@@ -49,7 +49,7 @@ else:
 #* SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env('SECRET_KEY')
 #* DB config
-DB_URL= get_env('DB_URL')
+DB_URL = get_env('DATABASE_URL') or get_env('DB_URL')
 
 #* Hosts for the app
 #* Localhost:
@@ -223,7 +223,7 @@ LIST_OF_DATABASES = [
 import dj_database_url
 
 DATABASES = {
-    'default': LIST_OF_DATABASES[0] if DEBUG else dj_database_url.parse(DB_URL),
+    'default': LIST_OF_DATABASES[0] if DEBUG else dj_database_url.config(conn_max_age=600)
 }
 
 # DATABASES = {
