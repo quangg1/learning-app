@@ -228,12 +228,23 @@ class AuthUI(ft.Container):
         self.signin_btn.visible = False
         self.loading_indicator.visible = True
         self.page.update()
+        
         # Fetch form data for sign-up
         username = self.username_txtfield.value
         password = self.password_txtfield.value
         email = self.email.value
         fullname = self.fullname.value
         phone = self.phone.value
+        
+        # Validate required fields
+        if not all([username, password, email, fullname, phone]):
+            self.signin_text.value = "Please fill in all required fields"
+            self.signin_text.color = "red"
+            self.page.update()
+            self.signin_btn.visible = True
+            self.loading_indicator.visible = False
+            return
+        
         data = {
             'username': username,
             'password': password,
@@ -241,10 +252,19 @@ class AuthUI(ft.Container):
             'full_name': fullname,
             'phone': phone
         }
+        
         # Attempt sign-up
         response = AuthAPI.sign_up(data)
         if response.get('code') == 'res_success':
-            self.page.go('/sign-in')  # Redirect to sign-in page
+            self.signin_text.value = "Sign up successful! Redirecting to login..."
+            self.signin_text.color = "green"
+            self.page.update()
+            self.page.go('/sign-in')
+        else:
+            error_msg = response.get('message', 'Sign up failed. Please try again.')
+            self.signin_text.value = error_msg
+            self.signin_text.color = "red"
+            
         # Re-enable button and hide loading indicator
         self.signin_btn.visible = True
         self.loading_indicator.visible = False

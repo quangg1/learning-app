@@ -82,8 +82,20 @@ class AuthAPI:
         '''
         Sends a POST request to sign up a new user with the provided payload. Returns the server response.
         '''
-        response = post(f'{DOMAIN_API}/api-view/sign-up/', json=payload)
-        return response.json()
+        try:
+            response = post(f'{DOMAIN_API}/api-view/sign-up/', json=payload)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                return {
+                    'code': 'res_error',
+                    'message': f'Server returned status code {response.status_code}'
+                }
+        except Exception as e:
+            return {
+                'code': 'res_error',
+                'message': str(e)
+            }
     
     @staticmethod
     def sign_in(payload: dict):
