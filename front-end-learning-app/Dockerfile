@@ -45,14 +45,27 @@ EXPOSE 10000
 
 # Create a script to start Xvfb and the application
 RUN echo '#!/bin/bash\n\
+# Remove any existing X server lock files\n\
+rm -f /tmp/.X*-lock\n\
+rm -f /tmp/.X11-unix/X*\n\
+\n\
 echo "Starting Xvfb..."\n\
 Xvfb :99 -screen 0 1024x768x16 &\n\
-sleep 1\n\
+sleep 2\n\
+\n\
 echo "Starting Gunicorn on port $PORT..."\n\
 echo "Current working directory: $(pwd)"\n\
 echo "Contents of current directory:"\n\
 ls -la\n\
-gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 wsgi:app\n\
+\n\
+# Start Gunicorn with debug logging\n\
+PYTHONPATH=/app gunicorn \
+    --bind 0.0.0.0:$PORT \
+    --workers 1 \
+    --threads 8 \
+    --timeout 120 \
+    --log-level debug \
+    wsgi:app\n\
 ' > /app/start.sh && \
     chmod +x /app/start.sh
 
