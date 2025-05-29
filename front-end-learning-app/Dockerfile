@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 WORKDIR /app
 
@@ -20,6 +20,7 @@ ENV DOMAIN_BE=https://learning-app-backend-0gfg.onrender.com
 ENV SENTIMENT_API_DOMAIN=''
 ENV TURN_ON_SCREEN=False
 ENV PORT=8080
+ENV PYTHONPATH=/app
 
 # Expose the port
 EXPOSE 8080

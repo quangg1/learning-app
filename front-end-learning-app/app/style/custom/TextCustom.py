@@ -8,7 +8,7 @@ from app import (
     ft
 )
 from app.style import *
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Union, Optional
 from flet import TextSpan, TextOverflow
 
 
@@ -18,7 +18,51 @@ class TextCustom(ft.Text):
         - Inherits from: ft.Text
         - Purpose: Define a custom component for text styling.
     '''
-    def __init__(self, value: str | None = None, spans: List[TextSpan] | None = None, text_align: ft.TextAlign | None = None, font_family: str | None = None, size: None | int | float = None, weight: ft.FontWeight | None = None, italic: bool | None = None, style: ft.TextThemeStyle | ft.TextStyle | None = None, theme_style: ft.TextThemeStyle | None = None, max_lines: int | None = None, overflow: ft.TextOverflow = TextOverflow.NONE, selectable: bool | None = None, no_wrap: bool | None = None, color: str | None = None, bgcolor: str | None = None, semantics_label: str | None = None, ref: ft.Ref | None = None, key: str | None = None, width: None | int | float = None, height: None | int | float = None, left: None | int | float = None, top: None | int | float = None, right: None | int | float = None, bottom: None | int | float = None, expand: None | bool | int = None, expand_loose: bool | None = None, col: Dict[str, int | float] | int | float | None = None, opacity: None | int | float = None, rotate: None | int | float | ft.Rotate = None, scale: None | int | float | ft.Scale = None, offset: None | ft.Offset | Tuple[float | int, float | int] = None, aspect_ratio: None | int | float = None, animate_opacity: None | bool | int | ft.Animation = None, animate_size: None | bool | int | ft.Animation = None, animate_position: None | bool | int | ft.Animation = None, animate_rotation: None | bool | int | ft.Animation = None, animate_scale: None | bool | int | ft.Animation = None, animate_offset: None | bool | int | ft.Animation = None, on_animation_end=None, tooltip: str | None = None, visible: bool | None = None, disabled: bool | None = None, data: Any = None, rtl: bool | None = None):
-        super().__init__(value, spans, text_align, font_family, size, weight, italic, style, theme_style, max_lines, overflow, selectable, no_wrap, PRIORITY, bgcolor, semantics_label, ref, key, width, height, left, top, right, bottom, expand, expand_loose, col, opacity, rotate, scale, offset, aspect_ratio, animate_opacity, animate_size, animate_position, animate_rotation, animate_scale, animate_offset, on_animation_end, tooltip, visible, disabled, data, rtl)
+    def __init__(self, 
+                 value: Optional[str] = None, 
+                 spans: Optional[List[TextSpan]] = None, 
+                 text_align: Optional[ft.TextAlign] = None, 
+                 font_family: Optional[str] = None, 
+                 size: Optional[Union[int, float]] = None, 
+                 weight: Optional[ft.FontWeight] = None, 
+                 italic: Optional[bool] = None, 
+                 style: Optional[Union[ft.TextThemeStyle, ft.TextStyle]] = None, 
+                 theme_style: Optional[ft.TextThemeStyle] = None, 
+                 max_lines: Optional[int] = None, 
+                 overflow: ft.TextOverflow = TextOverflow.NONE, 
+                 selectable: Optional[bool] = None, 
+                 no_wrap: Optional[bool] = None, 
+                 color: Optional[str] = None, 
+                 bgcolor: Optional[str] = None, 
+                 semantics_label: Optional[str] = None, 
+                 ref: Optional[ft.Ref] = None, 
+                 key: Optional[str] = None, 
+                 width: Optional[Union[int, float]] = None, 
+                 height: Optional[Union[int, float]] = None, 
+                 left: Optional[Union[int, float]] = None, 
+                 top: Optional[Union[int, float]] = None, 
+                 right: Optional[Union[int, float]] = None, 
+                 bottom: Optional[Union[int, float]] = None, 
+                 expand: Optional[Union[bool, int]] = None, 
+                 expand_loose: Optional[bool] = None, 
+                 col: Optional[Union[Dict[str, Union[int, float]], int, float]] = None, 
+                 opacity: Optional[Union[int, float]] = None, 
+                 rotate: Optional[Union[int, float, ft.Rotate]] = None, 
+                 scale: Optional[Union[int, float, ft.Scale]] = None, 
+                 offset: Optional[Union[ft.Offset, Tuple[Union[float, int], Union[float, int]]]] = None, 
+                 aspect_ratio: Optional[Union[int, float]] = None, 
+                 animate_opacity: Optional[Union[bool, int, ft.Animation]] = None, 
+                 animate_size: Optional[Union[bool, int, ft.Animation]] = None, 
+                 animate_position: Optional[Union[bool, int, ft.Animation]] = None, 
+                 animate_rotation: Optional[Union[bool, int, ft.Animation]] = None, 
+                 animate_scale: Optional[Union[bool, int, ft.Animation]] = None, 
+                 animate_offset: Optional[Union[bool, int, ft.Animation]] = None, 
+                 on_animation_end=None, 
+                 tooltip: Optional[str] = None, 
+                 visible: Optional[bool] = None, 
+                 disabled: Optional[bool] = None, 
+                 data: Any = None, 
+                 rtl: Optional[bool] = None):
+        super().__init__(value, spans, text_align, font_family, size, weight, italic, style, theme_style, max_lines, overflow, selectable, no_wrap, color, bgcolor, semantics_label, ref, key, width, height, left, top, right, bottom, expand, expand_loose, col, opacity, rotate, scale, offset, aspect_ratio, animate_opacity, animate_size, animate_position, animate_rotation, animate_scale, animate_offset, on_animation_end, tooltip, visible, disabled, data, rtl)
         
         
