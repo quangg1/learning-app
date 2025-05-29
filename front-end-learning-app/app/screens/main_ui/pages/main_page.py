@@ -869,9 +869,7 @@ class MainPage(ft.Container):
                             color=data.get('color'),
                             border_side=normal_border,
                             radius=150,
-                            title=f'{
-                                "Positive" if data.get("index") == 0 else "Negative" if data.get("index") == 1 else "Neutrual"
-                            }: {data.get("total")/total_comments*100:.2f}%',
+                            title=f"{'Positive' if data.get('index') == 0 else 'Negative' if data.get('index') == 1 else 'Neutral'}: {(data.get('total')/total_comments*100):.2f}%",
                             badge=ft.Container(
                                 content=ft.Icon(
                                     data.get('badge'),
