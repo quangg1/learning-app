@@ -17,6 +17,10 @@ RUN apt-get update && \
     libgstreamer1.0-0 \
     libgstreamer-plugins-base1.0-0 \
     gstreamer1.0-plugins-base \
+    && apt-get install -y --no-install-recommends \
+    libmpv1 \
+    libmpv-dev \
+    mpv \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first to leverage Docker cache
