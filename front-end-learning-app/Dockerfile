@@ -34,13 +34,13 @@ ENV API_BE=learning-app
 ENV DOMAIN_BE=https://learning-app-backend-0gfg.onrender.com
 ENV SENTIMENT_API_DOMAIN=''
 ENV TURN_ON_SCREEN=False
-ENV PORT=8080
+ENV PORT=10000
 ENV PYTHONPATH=/app
 ENV DISPLAY=:99
 ENV PYTHONUNBUFFERED=1
 
 # Expose the port
-EXPOSE 8080
+EXPOSE 10000
 
 # Create a script to start Xvfb and the application
 RUN echo '#!/bin/bash\n\
@@ -48,6 +48,9 @@ echo "Starting Xvfb..."\n\
 Xvfb :99 -screen 0 1024x768x16 &\n\
 sleep 1\n\
 echo "Starting Flet application on port $PORT..."\n\
+echo "Current working directory: $(pwd)"\n\
+echo "Contents of current directory:"\n\
+ls -la\n\
 flet run --port $PORT --host 0.0.0.0 main.py\n\
 ' > /app/start.sh && \
     chmod +x /app/start.sh
