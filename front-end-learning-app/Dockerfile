@@ -19,6 +19,7 @@ RUN apt-get update && \
     libgstreamer-plugins-base1.0-0 \
     gstreamer1.0-plugins-base \
     libmpv1 \
+    xvfb \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first to leverage Docker cache
@@ -35,9 +36,14 @@ ENV SENTIMENT_API_DOMAIN=''
 ENV TURN_ON_SCREEN=False
 ENV PORT=8080
 ENV PYTHONPATH=/app
+ENV DISPLAY=:99
 
 # Expose the port
 EXPOSE 8080
 
+# Create a script to start Xvfb and the application
+RUN echo '#!/bin/bash\nXvfb :99 -screen 0 1024x768x16 &\nsleep 1\nflet run --port $PORT --host 0.0.0.0 main.py' > /app/start.sh && \
+    chmod +x /app/start.sh
+
 # Run the application
-CMD flet run --port $PORT --host 0.0.0.0 main.py 
+CMD ["/app/start.sh"] 
