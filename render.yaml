@@ -21,6 +21,8 @@ services:
     name: learning-app-frontend
     runtime: docker
     rootDir: front-end-learning-app
+    buildCommand: docker build -t learning-app-frontend .
+    startCommand: docker run -p 8080:8080 learning-app-frontend
     envVars:
       - key: API_BE
         value: "learning-app"
@@ -28,6 +30,8 @@ services:
         value: "https://learning-app-backend-0gfg.onrender.com"
       - key: TURN_ON_SCREEN
         value: "false"
+      - key: PORT
+        value: "8080"
 
 databases:
   - name: learning-app-db
