@@ -22,7 +22,7 @@ services:
     runtime: docker
     rootDir: front-end-learning-app
     buildCommand: docker build -t learning-app-frontend .
-    startCommand: docker run -p 8080:8080 learning-app-frontend
+    startCommand: docker run --init -p 8080:8080 learning-app-frontend
     envVars:
       - key: API_BE
         value: "learning-app"

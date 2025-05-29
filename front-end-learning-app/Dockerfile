@@ -37,12 +37,19 @@ ENV TURN_ON_SCREEN=False
 ENV PORT=8080
 ENV PYTHONPATH=/app
 ENV DISPLAY=:99
+ENV PYTHONUNBUFFERED=1
 
 # Expose the port
 EXPOSE 8080
 
 # Create a script to start Xvfb and the application
-RUN echo '#!/bin/bash\nXvfb :99 -screen 0 1024x768x16 &\nsleep 1\nflet run --port $PORT --host 0.0.0.0 main.py' > /app/start.sh && \
+RUN echo '#!/bin/bash\n\
+echo "Starting Xvfb..."\n\
+Xvfb :99 -screen 0 1024x768x16 &\n\
+sleep 1\n\
+echo "Starting Flet application on port $PORT..."\n\
+flet run --port $PORT --host 0.0.0.0 main.py\n\
+' > /app/start.sh && \
     chmod +x /app/start.sh
 
 # Run the application
