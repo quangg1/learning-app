@@ -34,6 +34,7 @@ services:
         value: "10000"
       - key: PYTHON_VERSION
         value: "3.11.8"
+    plan: free
 
 databases:
   - name: learning-app-db

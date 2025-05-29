@@ -25,6 +25,7 @@ RUN apt-get update && \
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install gunicorn
 
 # Copy the rest of the application
 COPY . .
@@ -47,11 +48,11 @@ RUN echo '#!/bin/bash\n\
 echo "Starting Xvfb..."\n\
 Xvfb :99 -screen 0 1024x768x16 &\n\
 sleep 1\n\
-echo "Starting Flet application on port $PORT..."\n\
+echo "Starting Gunicorn on port $PORT..."\n\
 echo "Current working directory: $(pwd)"\n\
 echo "Contents of current directory:"\n\
 ls -la\n\
-flet run --port $PORT --host 0.0.0.0 main.py\n\
+gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 wsgi:app\n\
 ' > /app/start.sh && \
     chmod +x /app/start.sh
 
