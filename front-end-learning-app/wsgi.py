@@ -1,12 +1,12 @@
 import flet as ft
+import flet.web
 import main
 
 def create_app():
-    page = ft.Page(
-        port=10000,
-        view=ft.WEB_BROWSER
+    return ft.app(
+        target=main.main,
+        view=ft.WEB_BROWSER,
+        web_renderer="html"
     )
-    main.main(page)
-    return page.web_server
 
 app = create_app() 
