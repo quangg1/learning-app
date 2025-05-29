@@ -1,0 +1,10 @@
+{
+    "web": {
+        "port": "8080",
+        "host": "0.0.0.0"
+    },
+    "routing": "path",
+    "assets_dir": "assets",
+    "base_url": "/",
+    "upload_dir": "uploads"
+} 

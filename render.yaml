@@ -17,6 +17,18 @@ services:
           name: learning-app-db
           property: connectionString
 
+  - type: web
+    name: learning-app-frontend
+    runtime: docker
+    rootDir: front-end-learning-app
+    envVars:
+      - key: API_BE
+        value: "learning-app"
+      - key: DOMAIN_BE
+        value: "https://learning-app-backend-0gfg.onrender.com"
+      - key: TURN_ON_SCREEN
+        value: "false"
+
 databases:
   - name: learning-app-db
     databaseName: learning_app
