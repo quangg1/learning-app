@@ -61,3 +61,4 @@ with connection.cursor() as cursor:
 END
 
 echo "Build completed!" 
+python manage.py loaddata backup/data/*.json
