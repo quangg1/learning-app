@@ -59,6 +59,14 @@ with connection.cursor() as cursor:
         raise Exception("No tables found in public schema!")
     print("Found tables:", [table[0] for table in tables])
 END
-python manage.py loaddata backup/data/*.json
+python manage.py loaddata backup/data/roles.json
+python manage.py loaddata backup/data/users.json
+python manage.py loaddata backup/data/userroles.json
+python manage.py loaddata backup/data/extents.json
+python manage.py loaddata backup/data/discounts.json
+python manage.py loaddata backup/data/courses.json
+python manage.py loaddata backup/data/lessons.json
+python manage.py loaddata backup/data/detaillessons.json
+python manage.py loaddata backup/data/exercises.json
 echo "Build completed!" 
 
