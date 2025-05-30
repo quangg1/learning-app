@@ -5,7 +5,7 @@ echo "Installing dependencies..."
 pip install -r requirements.txt
 
 echo "Running collectstatic..."
-python manage.py collectstatic --no-input --clear
+python manage.py collectstatic --noinput
 
 echo "Setting up database schema..."
 python manage.py shell << END
