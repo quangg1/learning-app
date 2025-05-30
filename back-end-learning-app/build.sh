@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # exit on error
 set -o errexit
-
+cd back_end_learning_app
 echo "Installing dependencies..."
 pip install -r requirements.txt
 
