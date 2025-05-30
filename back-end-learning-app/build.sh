@@ -28,32 +28,20 @@ except OperationalError:
     raise Exception("Could not connect to database!")
 END
 
-echo "Removing old migrations..."
-find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
-find . -path "*/migrations/*.pyc" -delete
-
-echo "Creating fresh migrations..."
-python manage.py makemigrations web_app --noinput
-
-echo "Attempting to reset database schema..."
-python manage.py shell << END
-from django.db import connection
-cursor = connection.cursor()
-try:
-    cursor.execute("DROP SCHEMA public CASCADE;")
-    cursor.execute("CREATE SCHEMA public;")
-    print("Database schema reset successful!")
-except Exception as e:
-    print(f"Error resetting schema: {e}")
-END
+# Don't delete existing migrations
+echo "Making migrations if needed..."
+python manage.py makemigrations --noinput
 
 echo "Running migrations..."
-python manage.py migrate --noinput
-python manage.py migrate auth --noinput
+# First, migrate the basic Django apps
 python manage.py migrate contenttypes --noinput
+python manage.py migrate auth --noinput
 python manage.py migrate admin --noinput
 python manage.py migrate sessions --noinput
+# Then migrate your app
 python manage.py migrate web_app --noinput
+# Finally run a general migrate to catch any dependencies
+python manage.py migrate --noinput
 
 echo "Verifying database tables..."
 python manage.py shell << END
